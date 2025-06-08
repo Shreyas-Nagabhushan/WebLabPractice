@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Form</title>
+</head>
+<body>
+  <h2>Student Registration Form</h2>
+  <form>
+
+    <!-- Name: Required, only letters -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Only letters allowed">
+    <br><br>
+
+    <!-- Email: Valid email with placeholder -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required placeholder="Please enter a valid email address">
+    <br><br>
+
+    <!-- Phone: Format 080-555-5555 -->
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required pattern="\d{3}-\d{3}-\d{4}" placeholder="080-555-5555" title="Format: 080-555-5555">
+    <br><br>
+
+    <!-- Semester: Range 1 to 8 -->
+    <label for="semester">Semester (1–8):</label>
+    <input type="number" id="semester" name="semester" min="1" max="8" required>
+    <br><br>
+
+    <!-- Branch: Datalist -->
+    <label for="branch">Branch:</label>
+    <input list="branches" id="branch" name="branch" required>
+    <datalist id="branches">
+      <option value="Computer Science">
+      <option value="Electronics">
+      <option value="Mechanical">
+      <option value="Civil">
+      <option value="Information Technology">
+    </datalist>
+    <br><br>
+
+    <!-- Website: Must start with http:// -->
+    <label for="website">Website:</label>
+    <input type="url" id="website" name="website" required pattern="http://.*" placeholder="http://example.com" title="Must start with http://">
+    <br><br>
+
+    <button type="submit">Submit</button>
+
+  </form>
+</body>
+</html>
