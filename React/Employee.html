@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./react/react.development.js"></script>
+<script src="./react/react-dom.development.js"></script>
+<script src="./react/babel.min.js"></script>
+<script src="./react/prop-types.js"></script>
+
+<style>
+    body{
+        margin: 0; 
+    }
+    .app
+    {
+        background-color: #282c34;
+        min-height: 100vh;
+        padding: 10px;
+    }
+    .employeeDetails{
+        height: 30%;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 10px; 
+        color: white;
+    }
+</style>
+<body id = "root">
+    
+</body>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+
+    function EmployeeDetails(props)
+    {
+        return (
+            <div className="employeeDetails">
+                <h2>Name: {props.employee.name} </h2>
+                <h2>Age: {props.employee.age} </h2>
+                <h2>Salary: {props.employee.salary} </h2>
+            </div>
+        ); 
+    }
+
+    function SetEmployeeDetails(props)
+    {
+        return (
+            <div className="employeeDetails">
+                <input name="name" type="text" placeholder="Name..." onChange={props.handleChange} />
+                <input name="age" type="text" placeholder="Age..." onChange={props.handleChange} />
+                <input name="salary" type="text" placeholder="Salary..." onChange={props.handleChange} />
+            </div>
+        )
+    }
+
+    function App(props)
+    {
+        const [employee, setEmployee] = React.useState({name:"test", age:"7", salary:"8000"}); 
+
+        const handleChange = (event) =>
+        {
+            setEmployee(
+                {
+                    ...employee, 
+                    [event.target.name]: event.target.value
+                }
+            ); 
+        }
+
+        return (
+            <div className="app">
+                <EmployeeDetails  employee={employee}/>
+                <SetEmployeeDetails handleChange={handleChange}/>
+            </div>
+        ); 
+    }
+    ReactDOM.render(<App />, root);
+</script>
+</html>
