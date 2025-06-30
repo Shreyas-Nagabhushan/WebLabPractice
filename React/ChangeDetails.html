@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+</head>
+<style>
+    body{
+        margin: 0; 
+        background-color: #1c1c1c;
+        height: 100vh;
+        width: 100vw;
+        color: white;
+    }
+
+    #root{
+        height: 100%;
+        /* background-color: blue; */
+    }
+
+    button{
+        background-color: #3c3c3c;
+        border: solid white 2px; 
+        border-radius: 10px;
+        padding: 10px;
+        color: white;
+    }
+
+    .app{
+        display: flex; 
+        flex-direction: column;
+        padding: 20px;
+    }
+</style>
+
+<script src="react/react.development.js"></script>
+<script src="react/react-dom.development.js"></script>
+<script src="react/prop-types.js"></script>
+<script src="react/babel.min.js"></script>
+
+<body>
+    <div id = "root">
+
+    </div>
+</body>
+
+<script type="text/babel">
+    /*
+    function App(props)
+    {
+        const [name, setName] = React.useState('John'); 
+        const [address, setAddress] = React.useState("Bengaluru"); 
+
+        const handleChange = (event) =>
+        {
+            const newName = prompt("enter name"); 
+            const newAdd = prompt("Enter address"); 
+            setName(newName); 
+            setAddress(newAdd);
+        }
+
+        return (
+            <div className="app">
+                <h3>Name: {name} </h3>
+                <h3>Address: {address}</h3>
+                <button onClick={handleChange}>Change</button>
+            </div>
+        )
+    }
+    */
+
+    function App(props)
+    {
+        const [name, setName] = React.useState('John'); 
+
+        const handleChange = (e) => {
+            setName(e.target.value); 
+        }
+        return (
+            <div className="app">
+                <h1 align='center'>{name}</h1>
+                <input type="text" onChange={handleChange} />
+            </div>
+        )
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+</script>
+
+</html>

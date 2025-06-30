@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="title">
+    <input type="number" class="id">
+    <input type="text" class="status">
+    <button class="submit">submit</button>
+    <hr>
+    <button class="get-pending-complaints">Get Pending Complaints</button>
+    <div class="pending-complaints">
+
+    </div>
+    <hr>
+    <input type="number" class="complaint-id">
+    <input type="text" class="new-status">
+    <button class="update-status">Update Status</button>
+
+    <hr>
+    <button class="clear-all">Clear All</button>
+</body>
+<script>
+    const submitButton = document.querySelector(".submit"); 
+    const title = document.querySelector(".title"); 
+    const id = document.querySelector(".id");
+    const status = document.querySelector(".status");
+    const pendingComplaints = document.querySelector(".pending-complaints");
+    const getPendingComplaintsButtong = document.querySelector(".get-pending-complaints")
+    const updateButton = document.querySelector("button");
+    const complaintId = document.querySelector(".complaint-id");
+    const newStatus = document.querySelector(".new-status");
+    const updateStatusButton = document.querySelector(".update-status");
+    const clearAllButton = document.querySelector(".clear-all");
+
+    submitButton.addEventListener("click", async() =>
+    {
+        const res = await fetch("/submit", 
+            {
+                method: "POST", 
+                headers:
+                {
+                    "Content-Type": "application/json"
+                }, 
+                body: 
+                JSON.stringify({
+                    title: title.value, 
+                    id: id.value, 
+                    status: status.value
+                })
+            }
+        ); 
+        const restext = await res.text();
+        alert(restext);
+    }); 
+
+    getPendingComplaintsButtong.addEventListener("click", async() =>
+    {
+        const res = await fetch("/pending", 
+            {
+                method: "GET"
+            }
+        ); 
+        const data = await res.json();
+        pendingComplaints.innerHTML = JSON.stringify(data);
+    });
+
+    updateStatusButton.addEventListener("click", async() =>
+    {
+        const res = await fetch(`/update/${complaintId.value}/${newStatus.value}`, 
+            {
+                method: "PUT", 
+            }
+        ); 
+        const restext = await res.text();
+        alert(restext);
+    });
+
+    clearAllButton.addEventListener("click", async() => 
+    {
+        const res = await fetch("/clearAll", {
+            method: "PUT"
+        }); 
+        const data = await res.text(); 
+        alert(data);
+    }); 
+</script>
+</html>

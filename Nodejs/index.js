@@ -9,9 +9,16 @@ function vowelCount(sentence)
     return result;
 }
 
-const st = new Stack(); 
+function notBad(sentence)
+{
+    return sentence.replace(/(.*)not.*?bad(.*)/i, "$1good$2"); 
+}
 
-console.log(vowelCount("Le Tour de France"))
+console.log(notBad("Food is bad")); 
 
-st.push(5);
-console.log(st.peek()); 
+// const st = new Stack(); 
+
+// console.log(vowelCount("Le Tour de France"))
+
+// st.push(5);
+// console.log(st.peek()); 

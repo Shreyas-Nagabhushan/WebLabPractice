@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,4 +56,42 @@
 
     ReactDOM.render(<App />, root);
 </script>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Model Example</title>
+    <style>
+        h1 {
+            border: 1px solid red;
+            background-color: #D18C1D;
+            padding: 10px;
+        }
+
+        li {
+            margin: 15px;
+            background-color: #C0A9DB;
+        }
+
+        p {
+            width: 600px;
+            height: 400px;
+            border: 2px dotted black;
+            background-color: #D1D631;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample Heading</h1>
+
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+    </ul>
+
+    <p>This is a paragraph with fixed size using the box model.</p>
+</body>
 </html>
